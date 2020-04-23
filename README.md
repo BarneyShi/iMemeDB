@@ -1,3 +1,3 @@
 # iMemeDB
 Project for killing time in quarantine 
-<h2 style="color: grey">Sketch</h2>
+<h2 style="color: "REd" ">Sketch</h2>
