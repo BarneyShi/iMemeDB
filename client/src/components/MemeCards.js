@@ -1,18 +1,22 @@
 import React, { Component } from "react";
 
-class Meme extends Component {
-  constructor() {
-    super();
-    this.state = {
-      img: "",
-      uploder: "",
-    };
-  }
+class MemeCards extends Component {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     img: "",
+  //     uploder: "",
+  //   };
+  // }
+
+  // mapMeme = () => {
+  // }
 
   render() {
     return (
       <div className="col-md-4 col-sm-6 col-12">
         <div className="card">
+
           <img
             className=""
             alt="card-img"
@@ -24,4 +28,4 @@ class Meme extends Component {
   }
 }
 
-export default Meme;
+export default MemeCards;

@@ -1,9 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 const app = express();
 
+
+
 //Connect app to Mongo Atlas
-mongoose.connect("mongodb+srv://Zhuangzhuang:sz19950221@zhuangzhuang-nhqti.mongodb.net/test?retryWrites=true&w=majority", {
+const db = require('./config/mongoURI').mongoURI
+mongoose.connect(db, {
 	useNewUrlParser: true,
 	useFindAndModify: false,
     useCreateIndex: true,
@@ -14,7 +18,11 @@ mongoose.connect("mongodb+srv://Zhuangzhuang:sz19950221@zhuangzhuang-nhqti.mongo
 	console.log("ERROR", err.message);
 });
 
+//COR SETUP
+app.use(cors());
 
+//use Routes
+app.use('/memes', require('./routes/api/meme'))
 
 
 
