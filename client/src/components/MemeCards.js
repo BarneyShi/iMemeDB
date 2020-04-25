@@ -1,29 +1,39 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import axios from "axios";
 
 class MemeCards extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     img: "",
-  //     uploder: "",
-  //   };
-  // }
-
-  // mapMeme = () => {
-  // }
+  constructor() {
+    super();
+    this.state = {
+      memesData: {},
+      isLoaded: false,
+    };
+  }
+  componentDidMount() {
+    axios("http://localhost:3000/memes", {
+      method: "GET",
+    }).then((data) => this.setState({ memesData: data.data, isLoaded: true }));
+  }
 
   render() {
     return (
-      <div className="col-md-4 col-sm-6 col-12">
-        <div className="card">
-
-          <img
-            className=""
-            alt="card-img"
-            src="https://i.kym-cdn.com/photos/images/original/000/138/246/tumblr_lltzgnHi5F1qzib3wo1_400.jpg"
-          />
-        </div>
-      </div>
+      <Fragment>
+        {this.state.isLoaded
+          ? this.state.memesData.map((meme, index) => (
+              <div className="col-md-4 col-sm-6 col-12">
+                <div className="card">
+                  {" "}
+                  <img
+                    key={index}
+                    alt="meme-img"
+                    className="card-img-top"
+                    src={meme.image}
+                  />{" "}
+                </div>
+              </div>
+            ))
+          : null}
+      </Fragment>
     );
   }
 }
