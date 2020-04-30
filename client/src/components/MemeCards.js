@@ -1,11 +1,11 @@
-import React, { Fragment, useEffect} from "react";
-import {fetchMemes} from '../actions/fetchMemes'
-import {connect} from 'react-redux'
+import React, { Fragment, useEffect } from "react";
+import { fetchMemes } from "../actions/fetchMemes";
+import { connect } from "react-redux";
 
 const MemeCards = ({ dispatch, memesData, isLoading }) => {
-  useEffect(()=>{
-    dispatch(fetchMemes())
-  }, [dispatch])
+  useEffect(() => {
+    dispatch(fetchMemes());
+  }, [dispatch]);
   return (
     <Fragment>
       {!isLoading
@@ -19,6 +19,9 @@ const MemeCards = ({ dispatch, memesData, isLoading }) => {
                   className="card-img-top"
                   src={meme.image}
                 />{" "}
+                <div className="card-body">
+                  <h5> {meme.description}</h5>
+                </div>
               </div>
             </div>
           ))
@@ -27,9 +30,9 @@ const MemeCards = ({ dispatch, memesData, isLoading }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   memesData: state.memes.memesData,
-  isLoading: state.memes.isLoading
-})
+  isLoading: state.memes.isLoading,
+});
 
-export default connect(mapStateToProps)(MemeCards) ;
+export default connect(mapStateToProps)(MemeCards);

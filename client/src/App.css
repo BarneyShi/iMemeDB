@@ -9,12 +9,16 @@
 }
 .jumbotron {
   padding: 2.5rem 2rem;
+  position: relative;
+}
+
+#addButton {
+  margin: 0;
 }
 
 img .card-img-top {
   width: 100%;
 }
 .card>img {
-  height: 30vh;
-  width: auto;
+  height: auto;
 }
