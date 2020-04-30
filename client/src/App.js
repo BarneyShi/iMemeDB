@@ -13,7 +13,7 @@ class App extends Component {
           <p>iMemeDB</p>
           <div style={{ position: "absolute", bottom: "1vh", right:"3vw" }}>
             <Link to="/postmeme">
-              <button className="btn btn-success" id='addButton'>Add meme</button>
+              <button className="btn btn-success" id='addButton' >Add meme</button>
             </Link>
           </div>
         </div>

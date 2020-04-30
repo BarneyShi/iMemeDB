@@ -17,10 +17,8 @@ const MemeSchema = new Schema({
     },
     username: String,
   },
-  quality: {
-    rates: Number,
-    rater_total: Number,
-  },
+  upvotes: Number,
+  downvotes: Number,
   comments: {
     type: mongoose.Types.ObjectId,
     ref: "Comments",

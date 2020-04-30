@@ -19,7 +19,9 @@ router.post('/', formDataHandler.none(), (req,res)=>{
     const newmeme = new NewMeme({
         name: req.body.name,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        upvotes: 0,
+        downvotes: 0
     });
     newmeme.save().then(item=>{
         res.json(item)
@@ -35,5 +37,23 @@ router.get('/', (req,res)=>{
         return result;
     })
 })
+
+//@route POST/memes/:id/upvpte
+//@access public
+router.get('/:id/upvote',(req,res)=>{
+    NewMeme.findByIdAndUpdate(req.params.id, {$inc :{upvotes: 1}} ,(err,result)=>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+//@route POST /memes/:id/downvote
+//@access public
+router.get('/:id/downvote',(req,res)=>{
+    NewMeme.findByIdAndUpdate(req.params.id, {$inc :{downvotes: 1}} ,(err,result)=>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
 
 module.exports = router;

@@ -15,6 +15,12 @@
 #addButton {
   margin: 0;
 }
+.card-body {
+  padding: 0.8rem;
+}
+.card-header {
+  padding: 0.5rem 0.8rem;
+}
 
 img .card-img-top {
   width: 100%;
