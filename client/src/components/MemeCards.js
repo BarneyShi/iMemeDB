@@ -1,11 +1,20 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect} from "react";
 import { fetchMemes } from "../actions/fetchMemes";
+import {upvoteMeme} from '../actions/upvote';
 import { connect } from "react-redux";
 
-const MemeCards = ({ dispatch, memesData, isLoading }) => {
+const MemeCards = ({ dispatch, memesData, isLoading, fetchMemes, upvoteMeme }) => {
+  //HERE!! MUst include memesData so that fetchMemes is called everytime DB updated!!
   useEffect(() => {
-    dispatch(fetchMemes());
-  }, [dispatch]);
+    fetchMemes();
+  },[memesData,fetchMemes]);
+
+  //Click Upvote/Downvote Emoji
+  const upvote = e => {
+    upvoteMeme(e);
+  }
+
+
   return (
     <Fragment>
       {!isLoading
@@ -27,11 +36,11 @@ const MemeCards = ({ dispatch, memesData, isLoading }) => {
                   <h5> {meme.description}</h5>
                   </div> */}
                   <div>
-                  <span role="img" aria-label="upvote">
+                  <span data-id={meme._id} onClick={upvote}  role="img" aria-label="upvote">
                     👍
                   </span>{" "}
                   <span>{meme.upvotes} </span>
-                  <span role="img" aria-label="downvote">
+                  <span data-id={meme._id} role="img" aria-label="downvote">
                     👎
                   </span>
                   <span>{meme.downvotes} </span>
@@ -49,6 +58,13 @@ const MemeCards = ({ dispatch, memesData, isLoading }) => {
 const mapStateToProps = (state) => ({
   memesData: state.memes.memesData,
   isLoading: state.memes.isLoading,
+  isUpvoted: state.upvotememe.isUpvoted,
+  upVotes: state.upvotememe.upVotes
 });
 
-export default connect(mapStateToProps)(MemeCards);
+const mapDispatchToProps = dispatch => ({
+  fetchMemes : () => dispatch(fetchMemes()),
+  upvoteMeme: (e) => dispatch(upvoteMeme(e))
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(MemeCards);

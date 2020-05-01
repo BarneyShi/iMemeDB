@@ -40,15 +40,15 @@ router.get('/', (req,res)=>{
 
 //@route POST/memes/:id/upvpte
 //@access public
-router.get('/:id/upvote',(req,res)=>{
+router.post('/:id/upvote',(req,res)=>{
     NewMeme.findByIdAndUpdate(req.params.id, {$inc :{upvotes: 1}} ,(err,result)=>{
         if(err) throw err;
-        res.send(result)
+        res.send(result.upvotes.toString())
     })
 })
 //@route POST /memes/:id/downvote
 //@access public
-router.get('/:id/downvote',(req,res)=>{
+router.post('/:id/downvote',(req,res)=>{
     NewMeme.findByIdAndUpdate(req.params.id, {$inc :{downvotes: 1}} ,(err,result)=>{
         if(err) throw err;
         res.send(result)
