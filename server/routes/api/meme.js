@@ -51,7 +51,7 @@ router.post('/:id/upvote',(req,res)=>{
 router.post('/:id/downvote',(req,res)=>{
     NewMeme.findByIdAndUpdate(req.params.id, {$inc :{downvotes: 1}} ,(err,result)=>{
         if(err) throw err;
-        res.send(result)
+        res.send(result.downvotes.toString())
     })
 })
 

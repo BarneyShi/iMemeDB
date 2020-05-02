@@ -17,7 +17,10 @@
 }
 .card-body {
   padding: 0.8rem;
+  border-top: 0.5px solid #808080e0;
 }
+
+
 .card-header {
   padding: 0.5rem 0.8rem;
 }
@@ -26,5 +29,9 @@ img .card-img-top {
   width: 100%;
 }
 .card>img {
-  height: auto;
+  height: 30vh;
+  object-fit: contain;
+  background-color: #f8f9fa;
 }
+
+
