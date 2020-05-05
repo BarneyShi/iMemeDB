@@ -23,7 +23,7 @@ app.use(cors());
 
 //use Routes
 app.use('/memes', require('./routes/api/meme'))
-
+app.use('/user', require('./routes/api/user'))
 
 
 
