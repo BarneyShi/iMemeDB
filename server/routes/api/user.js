@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const brcypt = require("bcryptjs");
 const bodyparser = require("body-parser");
 const User = require("../../models/users");
+const auth = require('express-jwt')
 require('dotenv').config();
 
 //body-parser options
@@ -35,8 +36,8 @@ router.post("/register", (req, res) => {
   });
 });
 
-//@POST /user/login
-//@Private
+//@ POST /user/login
+//@ Public
 
 router.post("/login", (req, res) => {
   User.findOne({ email: req.body.email }, (err, result) => {
@@ -46,12 +47,19 @@ router.post("/login", (req, res) => {
       res.status(401).send({ Erros: "Incorrect password" });
     } else {
       const payload = { email: req.body.email };
-      jwt.sign(payload, process.env.ACCESS_TOKEN, (err, result) => {
+      jwt.sign(payload, process.env.ACCESS_TOKEN, {expiresIn: 900} , (err, result) => {
           if(err) throw err;
         res.status(200).send({ Message: "Successfully logged in", token: result });
       });
     }
   });
 });
+
+//@ GET /user/protected
+//@ Private
+router.get('/checkauth', auth({secret: process.env.ACCESS_TOKEN}), (req, res)=>{
+    res.status(200).send({Message: 'Logged In'})
+})
+
 
 module.exports = router;

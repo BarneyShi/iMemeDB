@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import MemeCards from "./components/MemeCards";
 import PostMeme from "./components/PostMeme";
+import Profile from './components/Profile';
+import LoginForm from './components/LoginForm'
 
 class App extends Component {
   render() {
@@ -15,6 +17,8 @@ class App extends Component {
             <Link to="/postmeme">
               <button className="btn btn-success" id='addButton' >Add meme</button>
             </Link>
+            <Profile/>
+
           </div>
         </div>
         <div className="container">
@@ -22,6 +26,7 @@ class App extends Component {
           <div className="row">
             <div className="card-deck">
               <Switch>
+                <Route path='/login' component={LoginForm}></Route>
                 <Route exact path="/" component={MemeCards}></Route>
                 <Route path="/postmeme" component={PostMeme}></Route>
               </Switch>

@@ -25,6 +25,13 @@ app.use(cors());
 app.use('/memes', require('./routes/api/meme'))
 app.use('/user', require('./routes/api/user'))
 
+//AUTH error handling
+app.use((err,req,res,next)=>{
+	if(err.name === 'UnauthorizedError'){
+		return res.status(401).send('Invalid token')
+	}
+	next()
+})
 
 
 const PORT = process.env.PORT || 3000;
