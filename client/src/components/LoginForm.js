@@ -10,8 +10,8 @@ const LoginForm = ({dispatch, isLoggedin, user}) => {
     const onSubmit = (e) => {
         e.preventDefault()
         dispatch(log_in())
-        let cookie = new Cookies()
-        console.log(cookie.get('token'))
+        // let cookie = new Cookies()
+        // console.log(cookie.get('token'))
         history.push('/')
 
     }

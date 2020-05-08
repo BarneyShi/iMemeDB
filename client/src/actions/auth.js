@@ -14,17 +14,17 @@ export const checkAuth = (token) => (dispatch) => {
   axios
     .get("http://localhost:3000/user/checkauth", {
       headers: {
-        Authorization:
-          "Bearer "+ token,
+        Authorization: "Bearer " + token,
       },
     })
-    .then(result => {
-        // if(err) console.log(err)
-        console.log(result.data.Data)
-      if (result.status === 200) {dispatch(logged(result.data.Data));}
+    .then((result) => {
+      // console.log(result.data.Data);
+      if (result.status === 200) {
+        dispatch(logged(result.data.Data.username));
+      }
     })
     .catch((err) => {
-        if(err) console.log('Error ' + err.response.status );
+      if (err) console.log("Auth Error " + err.response.status);
       dispatch(notlogged);
     });
 };

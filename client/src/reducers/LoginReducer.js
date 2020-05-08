@@ -1,19 +1,19 @@
 import * as actions from "../actions/login";
-import {Cookies} from 'react-cookie';
 
 const initialState = {
   isLogged: false,
-  user: [],
+  username: [],
 };
 
 const LoginReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.LOGGEDIN:
-        let cookie = new Cookies()
-        cookie.set('token', action.payload, {path: "/"});
-      return { isLogged: true, user: action.payload };
+
+      // return { isLogged: true, user: action.payload };
+      return { isLogged: true};
+
     case actions.NOT_LOGGEDIN:
-      return {isLogged: false, user: null};
+      return {isLogged: false, username: null};
     default:
       return state;
   }

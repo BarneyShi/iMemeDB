@@ -5,20 +5,21 @@ import { checkAuth, notlogged } from "../actions/auth";
 import { connect } from "react-redux";
 import { Cookies } from "react-cookie";
 
-const Profile = ({ dispatch, isLogged, user }) => {
+const Profile = ({ dispatch, isLogged, username }) => {
   let cookie = new Cookies();
-  useEffect(() => dispatch(checkAuth(cookie.get("token"))));
-  console.log(cookie.get("token"))
+  useEffect(() => dispatch(checkAuth(cookie.get("token"))),[dispatch,cookie]);
   //Click to sign out
   const onClick = () => {
     cookie.remove("token");
     dispatch(notlogged);
     window.location.reload();
   };
+// 
   return (
     <div>
       {!isLogged ? (
         <Fragment>
+     
           <Link to="/login">
             <button className="btn btn-success">Login</button>
           </Link>
@@ -28,7 +29,7 @@ const Profile = ({ dispatch, isLogged, user }) => {
         </Fragment>
       ) : (
         <Fragment>
-          <span>Hello, {user.username}</span>
+          <span>Hello, {username}</span>
           <button className="btn btn-warning" onClick={onClick}>
             Logout
           </button>
@@ -40,7 +41,7 @@ const Profile = ({ dispatch, isLogged, user }) => {
 
 const mapStateToProps = (state) => ({
   isLogged: state.auth.isLogged_Main,
-  user: state.auth.user,
+  username: state.auth.username,
 });
 
 export default connect(mapStateToProps)(Profile);

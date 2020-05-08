@@ -2,13 +2,13 @@ import * as actions from "../actions/auth";
 
 const initialState = {
   isLogged_Main: false,
-  user: []
+  username: []
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.LOGGEDIN:
-      return { isLogged_Main: true, user: action.payload };
+      return { isLogged_Main: true, username: action.payload };
     case actions.NOTLOGGEDIN:
         return {isLogged_Main: false, user: null}
     default:

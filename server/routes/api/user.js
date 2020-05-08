@@ -62,7 +62,7 @@ router.post("/login", (req, res) => {
             if (err) throw err;
             res
               .status(200)
-              .send({ Message: "Successfully logged in", token: token });
+              .send({ Message: "Successfully logged in", username: result.username, token: token });
           }
         );
       });
@@ -78,7 +78,7 @@ router.get(
   (req, res) => {
     //USe req.user to DECODE TOKEN
     res.status(200).send({ Message: "Logged In", Data: req.user });
-    console.log(res);
+    console.log(req.user);
   }
 );
 
