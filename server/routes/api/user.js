@@ -3,8 +3,8 @@ const jwt = require("jsonwebtoken");
 const brcypt = require("bcryptjs");
 const bodyparser = require("body-parser");
 const User = require("../../models/users");
-const auth = require('express-jwt')
-require('dotenv').config();
+const auth = require("express-jwt");
+require("dotenv").config();
 
 //body-parser options
 router.use(bodyparser.json());
@@ -29,7 +29,7 @@ router.post("/register", (req, res) => {
         email: req.body.email,
         password: brcypt.hashSync(req.body.password, 10),
       });
-      newuser.save().then((user) => res.send(user));
+      newuser.save().then((user) => res.status(200).send(user));
     } else {
       return res.status(400).send({ message: "Email already exists" });
     }
@@ -46,10 +46,25 @@ router.post("/login", (req, res) => {
     if (!brcypt.compareSync(req.body.password, result.password)) {
       res.status(401).send({ Erros: "Incorrect password" });
     } else {
-      const payload = { email: req.body.email };
-      jwt.sign(payload, process.env.ACCESS_TOKEN, {expiresIn: 900} , (err, result) => {
-          if(err) throw err;
-        res.status(200).send({ Message: "Successfully logged in", token: result });
+      User.findOne({ email: req.body.email }, (err, result) => {
+        //  payload = {
+        //   email: req.body.email,
+        //   username: result.username
+        // }
+        // console.log(username)
+        // console.log("123" + username);
+        const payload = { email: req.body.email, username: result.username };
+        jwt.sign(
+          payload,
+          process.env.ACCESS_TOKEN,
+          { expiresIn: 900 },
+          (err, token) => {
+            if (err) throw err;
+            res
+              .status(200)
+              .send({ Message: "Successfully logged in", token: token });
+          }
+        );
       });
     }
   });
@@ -57,9 +72,14 @@ router.post("/login", (req, res) => {
 
 //@ GET /user/protected
 //@ Private
-router.get('/checkauth', auth({secret: process.env.ACCESS_TOKEN}), (req, res)=>{
-    res.status(200).send({Message: 'Logged In'})
-})
-
+router.get(
+  "/checkauth",
+  auth({ secret: process.env.ACCESS_TOKEN }),
+  (req, res) => {
+    //USe req.user to DECODE TOKEN
+    res.status(200).send({ Message: "Logged In", Data: req.user });
+    console.log(res);
+  }
+);
 
 module.exports = router;

@@ -2,26 +2,26 @@ import axios from "axios";
 export const LOGGEDIN = "LOGGEDIN";
 export const NOTLOGGEDIN = "NOTLOGGEDIN";
 
-const logged = (arg) => ({
+export const logged = (arg) => ({
   type: LOGGEDIN,
   payload: arg,
 });
-const notlogged = () => ({
+export const notlogged = () => ({
   type: NOTLOGGEDIN,
 });
 
-export const checkAuth = () => (dispatch) => {
+export const checkAuth = (token) => (dispatch) => {
   axios
     .get("http://localhost:3000/user/checkauth", {
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExQGdtYWlsLmNvbSIsImlhdCI6MTU4ODc2MjI0NSwiZXhwIjoxNTg4NzYzMTQ1fQ.LZtJd19JZIS7cvVHKvdn0gSPruCQikoKQ0j6ImHSgOg",
+          "Bearer "+ token,
       },
     })
     .then(result => {
         // if(err) console.log(err)
-        console.log('Logged in')
-      if (result.status === 200) dispatch(logged(result));
+        console.log(result.data.Data)
+      if (result.status === 200) {dispatch(logged(result.data.Data));}
     })
     .catch((err) => {
         if(err) console.log('Error ' + err.response.status );

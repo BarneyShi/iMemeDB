@@ -23,7 +23,7 @@ const MemeCards = ({ dispatch, memesData, isLoading, fetchMemes, upvoteMeme, dow
     <Fragment>
       {!isLoading
         ? memesData.map((meme, index) => (
-            <div className="col-md-4 col-sm-6 col-12">
+            <div className="col-md-4 col-sm-6 col-12" key={index}>
               <div className="card">
                 <div className="card-header">
                   <h5>{meme.name}</h5>
