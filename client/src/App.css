@@ -10,6 +10,8 @@
 .jumbotron {
   padding: 2.5rem 2rem;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 #addButton {
@@ -33,5 +35,25 @@ img .card-img-top {
   object-fit: contain;
   background-color: #f8f9fa;
 }
+.card-deck>div {
+  padding-bottom: 1%;
+}
 
+/* LOGIN FORM */
+#login_form {
+  padding: 3%;
+  background-color: #e9ecef;
+}
+#login_form h3 {
+  padding-bottom: 20px;
+}
 
+/* REGISTER FORM */
+#register_form {
+  padding: 3%;
+  background-color: #e9ecef;
+}
+#register_form h3 {
+  text-align: center;
+  padding-bottom: 30px;
+}

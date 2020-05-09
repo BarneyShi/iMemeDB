@@ -14,7 +14,7 @@ class App extends Component {
       <div>
         <div className="jumbotron">
           <a href="/">
-            <p>iMemeDB</p>
+            <img alt="LOGO" src="logo.png" />
           </a>
           <div style={{ position: "absolute", bottom: "1vh", right: "3vw" }}>
             <Link to="/postmeme">
@@ -26,14 +26,17 @@ class App extends Component {
           </div>
         </div>
         <div className="container">
-          <div className="row"></div>
+          <div className="row">
+            <Switch>
+              <Route path="/register" component={RegisterForm}></Route>
+              <Route path="/login" component={LoginForm}></Route>
+              <Route path="/postmeme" component={PostMeme}></Route>
+            </Switch>
+          </div>
           <div className="row">
             <div className="card-deck">
               <Switch>
-                <Route path="/register" component={RegisterForm}></Route>
-                <Route path="/login" component={LoginForm}></Route>
                 <Route exact path="/" component={MemeCards}></Route>
-                <Route path="/postmeme" component={PostMeme}></Route>
               </Switch>
             </div>
           </div>

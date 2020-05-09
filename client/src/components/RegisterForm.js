@@ -12,7 +12,8 @@ const RegisterForm = ({dispatch, isRegistered, user}) => {
         history.push('/')
     }
     return (
-        <div>
+        <div id='register_form'>
+            <h3>Register</h3>
             <form onSubmit={onSubmit}>
                 <label htmlFor='username'>Username</label>
                 <input id='username' name='username' placeholder='Username' />
