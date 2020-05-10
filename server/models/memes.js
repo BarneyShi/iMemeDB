@@ -23,6 +23,14 @@ const MemeSchema = new Schema({
     type: mongoose.Types.ObjectId,
     ref: "Comments",
   },
+  upvoted_users : {
+    type: Array
+  },
+  downvoted_users: {
+    type: Array
+  }
+},{
+  versionKey: false
 });
 
 module.exports = mongoose.model("Meme", MemeSchema);

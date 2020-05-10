@@ -1,5 +1,8 @@
 import axios from 'axios'
+import { Cookies } from "react-cookie";
+
 export const DOWNVOTE = 'DOWNVOTE'
+
 
 export const downvote_meme = downvote => ({
     type: DOWNVOTE,
@@ -8,5 +11,11 @@ export const downvote_meme = downvote => ({
 
 export const downvoteMeme = e => dispatch => {
     const id = e.target.getAttribute('data-id');
-    axios.post(`http://localhost:3000/memes/${id}/downvote`).then(res=>dispatch(downvote_meme(parseInt(res))))
+    const cookie = new Cookies();
+    const token = cookie.get("token");
+    axios.post(`http://localhost:3000/memes/${id}/downvote`,null,{
+        headers: {
+            Authorization: "Bearer " + token,
+          },
+    }).then(res=>dispatch(downvote_meme(parseInt(res))))
 }

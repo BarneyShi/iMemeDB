@@ -33,7 +33,7 @@ class App extends Component {
               <Route path="/postmeme" component={PostMeme}></Route>
             </Switch>
           </div>
-          <div className="row">
+          <div className="row" style={{display:"inherit"}}>
             <div className="card-deck">
               <Switch>
                 <Route exact path="/" component={MemeCards}></Route>
