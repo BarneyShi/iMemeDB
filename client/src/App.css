@@ -78,3 +78,18 @@ img .card-img-top {
   background-color: rgba(60,66,64,0.5);
   display: none;
 }
+#form-body {
+  background-color: #f5f5f5;
+  padding: 5% 10% 10%;
+  position: relative;
+}
+#exit-button {
+  position: absolute;
+  top: -10px;
+  right: -40px;
+  font-size: 30px;
+}
+#exit-button:hover{
+  color: white;
+  cursor: pointer;
+}

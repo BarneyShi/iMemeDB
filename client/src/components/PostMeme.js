@@ -26,7 +26,7 @@ const PostMeme = ({ postMeme, isPosted, isLogged, username, checkAuth }) => {
           <Redirect
             to={{
               pathname: "/login",
-              state: { error: "Please sign in before posting memes" },
+              state: { error: "Please sign in before posting memes", remind_to_login: true },
             }}
           />
         </Fragment>

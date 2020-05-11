@@ -2,7 +2,7 @@ import * as actions from "../actions/auth";
 
 const initialState = {
   isLogged_Main: false,
-  username: []
+  username: null
 };
 
 const authReducer = (state = initialState, action) => {

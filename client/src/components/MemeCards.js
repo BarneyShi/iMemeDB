@@ -1,10 +1,12 @@
 import React, { Fragment, useEffect } from "react";
+import { useHistory} from "react-router-dom";
 import { fetchMemes } from "../actions/fetchMemes";
 import { upvoteMeme } from "../actions/upvote";
 import { downvoteMeme } from "../actions/downvote";
 import { connect } from "react-redux";
 import { Cookies } from "react-cookie";
 import { checkAuth } from "../actions/auth";
+import { Redirect } from "react-router-dom";
 
 const MemeCards = ({
   dispatch,
@@ -20,32 +22,25 @@ const MemeCards = ({
   useEffect(() => {
     fetchMemes();
   }, [memesData, fetchMemes]);
+
+  //Use Cookies
   let cookie = new Cookies();
   useEffect(() => checkAuth(cookie.get("token")), []);
+
+  //Use History
+  const history = useHistory();
+
   //Click Upvote/Downvote Emoji
   const upvote = (e) => {
-    if(!username) {
-      if(document.getElementById("contact-form").style.display === "none") {
-        document.getElementById('contact-form').style.display = "flex";
-        document.getElementById('form-body').style.display = "initial";
-      } else {
-        document.getElementById('contact-form').style.display = "none"
-      }
-      document.getElementById('checkform').style.display = "none";
+    if(username === null) {
+      history.push('/login')
     }
     upvoteMeme(e);
   };
   const downvote = (e) => {
     downvoteMeme(e);
   };
-  //Close modal
-  const exitButton = () =>{
-    document.getElementById("contact-form").style.display = "none";
-  }
-  const hiddenForm = () => {
-    document.getElementById('contact-form').style.display = "none";
-    window.location.reload();
-  }
+
 
   return (
     <Fragment>
@@ -139,21 +134,6 @@ const MemeCards = ({
           ))
         : null}
 
-        {/* Custome modal */}
-        <div id='contact-form' >
-          <form  id='form-body'>
-            <h2 >Contact Form</h2> 
-            <div onClick={exitButton} id="exit-button">&times;</div>
-            <p>Name:</p><input name="name" />
-            <p>Email Address:</p>
-            <input type='text' name="email" />
-            <p>Message:</p>
-            <textarea name="message"></textarea>
-            <br/>
-            <button className="btn btn-primary">Submit</button>
-          </form>
-
-        </div>
 
 
     </Fragment>

@@ -9,6 +9,14 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 
 class App extends Component {
+    //Close modal
+     exitButton = () =>{
+      document.getElementById("contact-form").style.display = "none";
+    }
+     hiddenForm = () => {
+      document.getElementById('contact-form').style.display = "none";
+      window.location.reload();
+    }
   render() {
     return (
       <div>
@@ -41,6 +49,17 @@ class App extends Component {
             </div>
           </div>
         </div>
+                {/* Custome modal */}
+                <div id='contact-form' style={{display:"none"}} >
+          <form  id='form-body'>
+            <h2 >Contact Form</h2> 
+            <div onClick={this.exitButton} id="exit-button">&times;</div>
+            <br/>
+            <button className="btn btn-primary">Submit</button>
+          </form>
+
+        </div>
+
       </div>
     );
   }
