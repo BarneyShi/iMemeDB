@@ -23,7 +23,7 @@ const LoginForm = ({ dispatch, isLoggedin, user, attempt }) => {
         });
       }
     }
-  }, [isLoggedin, attempt]);
+  }, [isLoggedin, attempt,history]);
 
   const onSubmit = (e) => {
     e.preventDefault();

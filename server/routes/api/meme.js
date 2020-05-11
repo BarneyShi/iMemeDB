@@ -31,6 +31,7 @@ router.post(
       description: req.body.description,
       upvotes: 0,
       downvotes: 0,
+      author: req.user.username
     });
     newmeme.save().then((item) => {
       res.json(item);
@@ -87,6 +88,7 @@ router.post(
         result.save().then((updated) => {
         });
       }
+
     });
   }
 );

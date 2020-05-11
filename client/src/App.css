@@ -16,6 +16,9 @@
 .jumbotron img {
   max-width: 100%;
 }
+.jumbotron button {
+  border-radius: 10px;
+}
 
 #addButton {
   margin: 0;
@@ -23,6 +26,15 @@
 .card-body {
   padding: 0.8rem;
   border-top: 0.5px solid #808080e0;
+  display: flex;
+}
+.card-body>span {
+  align-self: center;
+  margin-right: 3px;
+}
+body .card-body button{
+  margin: 0 0 0 auto;
+  border-radius: 10px;
 }
 
 
@@ -42,10 +54,13 @@ img .card-img-top {
   padding-bottom: 1%;
 }
 
+
+
 /* LOGIN FORM */
 #login_form {
   padding: 3%;
   background-color: #e9ecef;
+  border-radius: 15px;
 }
 #login_form h3 {
   padding-bottom: 20px;
@@ -55,6 +70,7 @@ img .card-img-top {
 #register_form {
   padding: 3%;
   background-color: #e9ecef;
+  border-radius: 15px;
 }
 #register_form h3 {
   text-align: center;

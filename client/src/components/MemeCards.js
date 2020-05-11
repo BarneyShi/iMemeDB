@@ -1,12 +1,11 @@
 import React, { Fragment, useEffect } from "react";
-import { useHistory} from "react-router-dom";
+import { useHistory, Link} from "react-router-dom";
 import { fetchMemes } from "../actions/fetchMemes";
 import { upvoteMeme } from "../actions/upvote";
 import { downvoteMeme } from "../actions/downvote";
 import { connect } from "react-redux";
 import { Cookies } from "react-cookie";
 import { checkAuth } from "../actions/auth";
-import { Redirect } from "react-router-dom";
 
 const MemeCards = ({
   dispatch,
@@ -25,7 +24,7 @@ const MemeCards = ({
 
   //Use Cookies
   let cookie = new Cookies();
-  useEffect(() => checkAuth(cookie.get("token")), []);
+  useEffect(() => checkAuth(cookie.get("token")), [cookie.get("token")]);
 
   //Use History
   const history = useHistory();
@@ -60,7 +59,6 @@ const MemeCards = ({
                   src={meme.image}
                 />
                 <div className="card-body">
-                  <div>
                     {/* UPVOTE ICON */}
                     {meme.upvoted_users.includes(username) ? (
                       <Fragment>
@@ -127,7 +125,9 @@ const MemeCards = ({
                         <span>{meme.downvotes} </span>
                       </Fragment>
                     )}
-                  </div>
+                     <button className='btn btn-info' onClick={()=>{
+                       history.push(`meme/${meme._id}`)
+                     }}>Info</button>
                 </div>
               </div>
             </div>

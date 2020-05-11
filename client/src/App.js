@@ -7,16 +7,17 @@ import PostMeme from "./components/PostMeme";
 import Profile from "./components/Profile";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
+import MemeDetail from "./components/MemeDetail";
 
 class App extends Component {
-    //Close modal
-     exitButton = () =>{
-      document.getElementById("contact-form").style.display = "none";
-    }
-     hiddenForm = () => {
-      document.getElementById('contact-form').style.display = "none";
-      window.location.reload();
-    }
+  //Close modal
+  exitButton = () => {
+    document.getElementById("contact-form").style.display = "none";
+  };
+  hiddenForm = () => {
+    document.getElementById("contact-form").style.display = "none";
+    window.location.reload();
+  };
   render() {
     return (
       <div>
@@ -39,9 +40,10 @@ class App extends Component {
               <Route path="/register" component={RegisterForm}></Route>
               <Route path="/login" component={LoginForm}></Route>
               <Route path="/postmeme" component={PostMeme}></Route>
+              <Route exact path='/meme/:id'component={MemeDetail}></Route>
             </Switch>
           </div>
-          <div className="row" style={{display:"inherit"}}>
+          <div className="row" style={{ display: "inherit" }}>
             <div className="card-deck">
               <Switch>
                 <Route exact path="/" component={MemeCards}></Route>
@@ -49,17 +51,17 @@ class App extends Component {
             </div>
           </div>
         </div>
-                {/* Custome modal */}
-                <div id='contact-form' style={{display:"none"}} >
-          <form  id='form-body'>
-            <h2 >Contact Form</h2> 
-            <div onClick={this.exitButton} id="exit-button">&times;</div>
-            <br/>
+        {/* Custome modal */}
+        <div id="contact-form" style={{ display: "none" }}>
+          <form id="form-body">
+            <h2>Contact Form</h2>
+            <div onClick={this.exitButton} id="exit-button">
+              &times;
+            </div>
+            <br />
             <button className="btn btn-primary">Submit</button>
           </form>
-
         </div>
-
       </div>
     );
   }

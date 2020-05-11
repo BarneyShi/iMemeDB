@@ -11,11 +11,12 @@ const MemeSchema = new Schema({
     default: Date.now(),
   },
   author: {
-    id: {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
-    },
-    username: String,
+    // id: {
+    //   type: mongoose.Types.ObjectId,
+    //   ref: "User",
+    // },
+    type: String,
+    ref: 'User'
   },
   upvotes: Number,
   downvotes: Number,
