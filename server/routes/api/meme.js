@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const formDataHandler = multer();
+const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const router = express.Router();
 const NewMeme = require("../../models/memes");
@@ -31,7 +32,8 @@ router.post(
       description: req.body.description,
       upvotes: 0,
       downvotes: 0,
-      author: req.user.username
+      author: req.user.username,
+      comments: { comment: {} },
     });
     newmeme.save().then((item) => {
       res.json(item);
@@ -57,7 +59,7 @@ router.post(
   (req, res) => {
     NewUser.findOne({ username: req.user.username }, (err, result) => {
       if (err) throw err;
-      if(result.downvoted_memes.includes(req.params.id)) return 
+      if (result.downvoted_memes.includes(req.params.id)) return;
       if (result.upvoted_memes.includes(req.params.id)) {
         NewMeme.findByIdAndUpdate(
           req.params.id,
@@ -72,8 +74,7 @@ router.post(
           }
         );
         result.upvoted_memes.pull(req.params.id);
-        result.save().then((updated) => {
-        });
+        result.save().then((updated) => {});
       } else {
         NewMeme.findByIdAndUpdate(
           req.params.id,
@@ -85,10 +86,8 @@ router.post(
           }
         );
         result.upvoted_memes.push(req.params.id);
-        result.save().then((updated) => {
-        });
+        result.save().then((updated) => {});
       }
-
     });
   }
 );
@@ -100,7 +99,7 @@ router.post(
   (req, res) => {
     NewUser.findOne({ username: req.user.username }, (err, result) => {
       if (err) throw err;
-      if(result.upvoted_memes.includes(req.params.id)) return 
+      if (result.upvoted_memes.includes(req.params.id)) return;
       if (result.downvoted_memes.includes(req.params.id)) {
         NewMeme.findByIdAndUpdate(
           req.params.id,
@@ -114,8 +113,7 @@ router.post(
           }
         );
         result.downvoted_memes.pull(req.params.id);
-        result.save().then((updated) => {
-        });
+        result.save().then((updated) => {});
       } else {
         NewMeme.findByIdAndUpdate(
           req.params.id,
@@ -129,10 +127,32 @@ router.post(
           }
         );
         result.downvoted_memes.push(req.params.id);
-        result.save().then((updated) => {
-        });
+        result.save().then((updated) => {});
       }
     });
+  }
+);
+
+//route @POST /meme/:id
+//access Private
+router.post(
+  "/:id/comments",
+  auth({ secret: process.env.ACCESS_TOKEN }),
+  (req, res) => {
+    NewMeme.findByIdAndUpdate(
+      { _id: mongoose.Types.ObjectId(req.params.id) },
+      {
+        $push: {
+          comments: { id:mongoose.Types.ObjectId, content: req.body.comment, commenter: req.user.username, date: new Date().toISOString() },
+        },
+      },
+      (err, result) => {
+        if (err) throw err;
+        result.save().then(() => {
+          console.log("New commnent added");
+        });
+      }
+    );
   }
 );
 

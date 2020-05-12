@@ -109,3 +109,55 @@ img .card-img-top {
   color: white;
   cursor: pointer;
 }
+
+/* MEME INFO PAGE */
+#meme_detail img {
+  max-width: 100%;
+}
+#meme_detail h4 {
+  text-align: center;
+}
+#meme_detail .card-body {
+  flex-direction: column;
+}
+#meme_detail .card img {
+  height: auto;
+  width: 70vw;
+}
+@media screen and (max-width:768){
+  #meme_detail .card img {
+    height: initial;
+  }
+}
+
+#meme_detail .card-body p {
+  margin-bottom: 0;
+}
+#comment_section p:nth-child(1) {
+  font-weight: 600;
+  margin-top: 0.5rem;
+  padding-bottom: 10px;
+}
+#comment_section {
+  padding: 0.4rem 0.8rem;
+}
+#comment_section input {
+  position: absolute;
+  right: 0.8rem;
+  border-radius: 15px;
+  border: none;
+  padding: 1px 5px;
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  font-size: 15px;
+}
+
+#comment_section p:not(:first-child) {
+  padding: 5px;
+  border-bottom: 0.5px solid #80808094;
+}  
+#comment_section span:nth-of-type(1) {
+  color: #ff1c00;
+  font-weight: 550;
+}

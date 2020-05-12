@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { useHistory, Link} from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import { fetchMemes } from "../actions/fetchMemes";
 import { upvoteMeme } from "../actions/upvote";
 import { downvoteMeme } from "../actions/downvote";
@@ -126,7 +126,7 @@ const MemeCards = ({
                       </Fragment>
                     )}
                      <button className='btn btn-info' onClick={()=>{
-                       history.push(`meme/${meme._id}`)
+                       history.push(`memes/${meme._id}`)
                      }}>Info</button>
                 </div>
               </div>

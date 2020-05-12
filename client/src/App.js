@@ -40,7 +40,7 @@ class App extends Component {
               <Route path="/register" component={RegisterForm}></Route>
               <Route path="/login" component={LoginForm}></Route>
               <Route path="/postmeme" component={PostMeme}></Route>
-              <Route exact path='/meme/:id'component={MemeDetail}></Route>
+              <Route exact path='/memes/:id'component={MemeDetail}></Route>
             </Switch>
           </div>
           <div className="row" style={{ display: "inherit" }}>
