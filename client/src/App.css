@@ -123,6 +123,7 @@ img .card-img-top {
 #meme_detail .card img {
   height: auto;
   width: 70vw;
+  margin: auto;
 }
 @media screen and (max-width:768){
   #meme_detail .card img {
@@ -141,16 +142,23 @@ img .card-img-top {
 #comment_section {
   padding: 0.4rem 0.8rem;
 }
+#comment_section textarea {
+  border-radius: 10px;
+}
 #comment_section input {
-  position: absolute;
-  right: 0.8rem;
+  /* position: absolute;
+  right: 0.8rem; */
   border-radius: 15px;
-  border: none;
+  border: 1px solid #007bff;;
   padding: 1px 5px;
   background-color: #007bff;
   border-color: #007bff;
-  color: #fff;
-  font-size: 15px;
+  margin-bottom: 5px;
+  width: 20%;
+  color: white;
+  font-size: 1rem;
+  margin-top: 3px;
+  display: none;
 }
 
 #comment_section p:not(:first-child) {

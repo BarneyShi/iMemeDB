@@ -12,7 +12,8 @@ const LoginForm = ({ dispatch, isLoggedin, user, attempt }) => {
   //Handle success/fail login
   useEffect(() => {
     if (isLoggedin) {
-      history.push("/");
+      // history.push("/");
+      history.goBack()
     } else {
       if (attempt) {
         history.push({

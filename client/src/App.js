@@ -23,7 +23,7 @@ class App extends Component {
       <div>
         <div className="jumbotron">
           <a href="/">
-            <img alt="LOGO" src="logo.png" />
+            <img alt="LOGO" src='/logo.png' />
           </a>
           <div style={{ position: "absolute", bottom: "1vh", right: "3vw" }}>
             <Link to="/postmeme">
@@ -51,7 +51,7 @@ class App extends Component {
             </div>
           </div>
         </div>
-        {/* Custome modal */}
+        {/* Custome modal
         <div id="contact-form" style={{ display: "none" }}>
           <form id="form-body">
             <h2>Contact Form</h2>
@@ -61,7 +61,7 @@ class App extends Component {
             <br />
             <button className="btn btn-primary">Submit</button>
           </form>
-        </div>
+        </div> */}
       </div>
     );
   }

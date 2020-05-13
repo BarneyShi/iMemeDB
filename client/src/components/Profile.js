@@ -10,7 +10,7 @@ const Profile = ({ dispatch, isLogged, username }) => {
   useEffect(() => dispatch(checkAuth(cookie.get("token"))),[dispatch,cookie]);
   //Click to sign out
   const onClick = () => {
-    cookie.remove("token");
+    cookie.remove("token", {path:'/'});
     dispatch(notlogged);
     window.location.reload();
   };

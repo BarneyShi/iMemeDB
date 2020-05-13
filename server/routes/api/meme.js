@@ -149,7 +149,7 @@ router.post(
       (err, result) => {
         if (err) throw err;
         result.save().then(() => {
-          console.log("New commnent added");
+          res.send("New commnent added");
         });
       }
     );
