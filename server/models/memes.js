@@ -18,6 +18,7 @@ const MemeSchema = new Schema(
     downvotes: Number,
     comments: {
       type: Array,
+      _id: Schema.Types.ObjectId,
       content: String,
       commenter: String,
       date: String

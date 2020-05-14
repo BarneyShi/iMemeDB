@@ -4,6 +4,29 @@ import { fetchMemes } from "../actions/fetchMemes";
 import { post_comment } from "../actions/comment";
 import { checkAuth } from "../actions/auth";
 
+const onClick = (e) => {
+  e.target.firstElementChild.style.display = 'initial';
+  e.target.firstElementChild.focus()
+};
+
+//Add eventlisters so that close modal if users click anywhere
+// window.addEventListener('click', e => {
+//   let length = document.getElementsByClassName('comment_delete_modal').length;
+//   for(let i=0; i<length;i++) {
+//     if(document.getElementsByClassName('comment_delete_modal')[i] === e.target){
+//       return 
+//     }
+//   }
+//   for(let i=0; i<length;i++) {
+//     document.getElementsByClassName('comment_delete_modal')[i].style = 'none'
+
+//   }
+//   // if(! document.getElementsByClassName('comment_delete_modal') === (e.target)){
+//   //   console.log(document.getElementsByClassName('comment_delete_modal')[1])
+//   // }
+//   // console.log(document.getElementsByClassName('comment_delete_modal'))
+// })
+
 const MemeDetail = ({
   memesData,
   fetchMemes,
@@ -13,22 +36,21 @@ const MemeDetail = ({
   posted,
   failure,
   error_msg,
-  
 }) => {
   useEffect(() => {
     fetchMemes();
   }, [memesData, fetchMemes]);
 
   //HOOK to Display ERROR
-  useEffect(()=> {
-
-    if(failure){
+  useEffect(() => {
+    if (failure) {
       document.getElementById("comment_error").innerText = error_msg;
     }
-    if(username != null && failure) document.getElementById("comment_error").innerText = ''
+    if (username != null && failure)
+      document.getElementById("comment_error").innerText = "";
 
-    if(posted) window.location.reload();
-  },[failure,posted,username])
+    if (posted) window.location.reload();
+  }, [failure, posted, username]);
 
   const submitComment = () => {
     const comment = document.getElementById("comment_text").value;
@@ -71,7 +93,10 @@ const MemeDetail = ({
                       }}
                       placeholder="..Comment"
                     ></textarea>{" "}
-                    <p id="comment_error" style={{color:'red',fontStyle:'italic'}}></p>
+                    <p
+                      id="comment_error"
+                      style={{ color: "red", fontStyle: "italic" }}
+                    ></p>
                     <input
                       type="button"
                       value="Submit"
@@ -81,7 +106,14 @@ const MemeDetail = ({
                     {meme.comments.map((comment, index) => {
                       return (
                         <p key={index}>
-                          <span>{comment.commenter}</span> <br />{" "}
+                          <span id='commenters'>{comment.commenter}</span> <br />{" "}
+                          {/* Delete comment */}
+                          <span onClick={onClick} style={{ float: "right" }}>
+                            &#215;
+                            <span tabIndex="0" onBlur={()=>console.log('clicked outside')} className="comment_delete_modal">
+                              Delete
+                            </span>
+                          </span>
                           <span style={{ fontSize: "0.75rem" }}>
                             &#x1F550; {comment.date.slice(0, 10)}
                           </span>
@@ -97,6 +129,8 @@ const MemeDetail = ({
           );
         }
       })}
+
+      {/* Comment Delete Confirmation */}
     </div>
   );
 };
