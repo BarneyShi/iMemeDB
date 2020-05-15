@@ -8,6 +8,8 @@ import authReducer from './authReducer'
 import RegisterReducer from './RegisterReducer'
 import LoginReducer from './LoginReducer'
 import CommentReducer from './CommentReducer'
+import DeleteCommentReducer from './DeleteCommentReducer'
+import MemeDeletionReducer from './MemeDeletionReducer'
 
 const rootReducer = combineReducers({
     memes: fetchMemesReducer,
@@ -17,7 +19,9 @@ const rootReducer = combineReducers({
     auth: authReducer,
     register: RegisterReducer,
     login: LoginReducer,
-    comment: CommentReducer
+    comment: CommentReducer,
+    comment_deletion: DeleteCommentReducer,
+    meme_deletion: MemeDeletionReducer
 })
 
 export default rootReducer;

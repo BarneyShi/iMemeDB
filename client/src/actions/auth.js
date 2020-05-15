@@ -24,7 +24,10 @@ export const checkAuth = (token) => (dispatch) => {
       }
     })
     .catch((err) => {
-      if (err) console.log("Auth Error ");
+      if (err) {
+        console.log("Auth Error ");
+        throw err;
+      }
       dispatch(notlogged);
     });
 };

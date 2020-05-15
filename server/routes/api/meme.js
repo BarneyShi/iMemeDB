@@ -33,7 +33,6 @@ router.post(
       upvotes: 0,
       downvotes: 0,
       author: req.user.username,
-      comments: { comment: {} },
     });
     newmeme.save().then((item) => {
       res.json(item);
@@ -143,7 +142,12 @@ router.post(
       { _id: mongoose.Types.ObjectId(req.params.id) },
       {
         $push: {
-          comments: { _id: new mongoose.Types.ObjectId(), content: req.body.comment, commenter: req.user.username, date: new Date().toISOString() },
+          comments: {
+            _id: new mongoose.Types.ObjectId(),
+            content: req.body.comment,
+            commenter: req.user.username,
+            date: new Date().toISOString(),
+          },
         },
       },
       (err, result) => {
@@ -156,19 +160,43 @@ router.post(
   }
 );
 
+//route @DELETE /memes/:id
+//access Private
+router.delete(
+  "/:id",
+  auth({ secret: process.env.ACCESS_TOKEN }),
+  (req, res) => {
+    NewMeme.findByIdAndDelete(
+      {_id: mongoose.Types.ObjectId(req.params.id) },
+      (err, result) => {
+        if(err) throw err;
+        res.send('MEME DELETED')
+      }
+    );
+  }
+);
+
 //route @DELETE /memes/:id/comments/delete
 //access Private
-router.delete('/:id/comments/:comment_id',auth({ secret: process.env.ACCESS_TOKEN }),(req,res)=>{
-  NewMeme.findByIdAndUpdate({_id:mongoose.Types.ObjectId(req.params.id)},{
-    $pull: {
-      comments: {_id: mongoose.Types.ObjectId(req.params.comment_id)}
-    }
-  },(err,result)=>{
-    if(err) throw err;
-    result.save().then(()=>{
-      res.send('comment deleted')
-    })
-  })
-})
+router.delete(
+  "/:id/comments/:comment_id",
+  auth({ secret: process.env.ACCESS_TOKEN }),
+  (req, res) => {
+    NewMeme.findByIdAndUpdate(
+      { _id: mongoose.Types.ObjectId(req.params.id) },
+      {
+        $pull: {
+          comments: { _id: mongoose.Types.ObjectId(req.params.comment_id) },
+        },
+      },
+      (err, result) => {
+        if (err) throw err;
+        result.save().then(() => {
+          res.send("comment deleted");
+        });
+      }
+    );
+  }
+);
 
 module.exports = router;

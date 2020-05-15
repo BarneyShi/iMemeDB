@@ -3,29 +3,22 @@ import { connect } from "react-redux";
 import { fetchMemes } from "../actions/fetchMemes";
 import { post_comment } from "../actions/comment";
 import { checkAuth } from "../actions/auth";
+import { delete_comment } from "../actions/deleteComment";
 
 const onClick = (e) => {
-  e.target.firstElementChild.style.display = 'initial';
-  e.target.firstElementChild.focus()
+  if (e.target.firstElementChild) {
+    e.target.firstElementChild.style.display = "initial";
+    e.target.firstElementChild.focus();
+  }
 };
-
-//Add eventlisters so that close modal if users click anywhere
-// window.addEventListener('click', e => {
-//   let length = document.getElementsByClassName('comment_delete_modal').length;
-//   for(let i=0; i<length;i++) {
-//     if(document.getElementsByClassName('comment_delete_modal')[i] === e.target){
-//       return 
-//     }
-//   }
-//   for(let i=0; i<length;i++) {
-//     document.getElementsByClassName('comment_delete_modal')[i].style = 'none'
-
-//   }
-//   // if(! document.getElementsByClassName('comment_delete_modal') === (e.target)){
-//   //   console.log(document.getElementsByClassName('comment_delete_modal')[1])
-//   // }
-//   // console.log(document.getElementsByClassName('comment_delete_modal'))
-// })
+//SMART TRICKS - USE ONBLUR TO CLOSE MODALS
+const onBlur = () => {
+  let length = document.getElementsByClassName("comment_delete_modal").length;
+  for (let i = 0; i < length; i++) {
+    document.getElementsByClassName("comment_delete_modal")[i].style.display =
+      "none";
+  }
+};
 
 const MemeDetail = ({
   memesData,
@@ -36,6 +29,8 @@ const MemeDetail = ({
   posted,
   failure,
   error_msg,
+  deleteComment,
+  comment_deleted,
 }) => {
   useEffect(() => {
     fetchMemes();
@@ -56,6 +51,14 @@ const MemeDetail = ({
     const comment = document.getElementById("comment_text").value;
     postComment(comment, match.params.id);
   };
+
+  //DELETE COMMENT
+  const clickToDelteComment = e => {
+    const comment_id = e.target.getAttribute('data-commentid');
+    const meme_id = e.target.getAttribute('data-memeid');
+    deleteComment(meme_id,comment_id);
+  }
+
   return (
     <div id="meme_detail">
       {memesData.map((meme, index) => {
@@ -106,23 +109,35 @@ const MemeDetail = ({
                     {meme.comments.map((comment, index) => {
                       return (
                         <p key={index}>
-                          <span id='commenters'>{comment.commenter}</span> <br />{" "}
-                          {/* Delete comment */}
-                          <span onClick={onClick} style={{ float: "right" }}>
+                          <span id="commenters">{comment.commenter}</span>{" "}
+                          <br /> {/* Delete comment */}
+                          {/* Conditional render DELETE BUTTON */}
+                          {comment.commenter === username ? <Fragment>
+                            <span onClick={onClick} style={{ float: "right" }}>
                             &#215;
-                            <span tabIndex="0" onBlur={()=>console.log('clicked outside')} className="comment_delete_modal">
+                            <span
+                              tabIndex="0"
+                              onBlur={onBlur}
+                              className="comment_delete_modal"
+                              data-commentid={comment._id}
+                              data-memeid = {meme._id}
+                              onClick={clickToDelteComment}
+                            >
                               Delete
                             </span>
                           </span>
+                          </Fragment>: null}
+                        
                           <span style={{ fontSize: "0.75rem" }}>
-                            &#x1F550; {comment.date.slice(0, 10)}
+                            &#x1F550; { comment.date.slice(0, 10)}
                           </span>
                           <br />
                           {comment.content}
                         </p>
                       );
-                    })}
+                    })}         
                   </div>
+
                 </div>
               </div>
             </Fragment>
@@ -142,11 +157,14 @@ const mapStateToProps = (state) => ({
   posted: state.comment.posted,
   failure: state.comment.failure,
   error_msg: state.comment.error_msg,
+  comment_deleted: state.comment_deletion.comment_deleted,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchMemes: () => dispatch(fetchMemes()),
   checkAuth: (e) => dispatch(checkAuth(e)),
   postComment: (comment, id) => dispatch(post_comment(comment, id)),
+  deleteComment: (meme_id, comment_id) =>
+    dispatch(delete_comment(meme_id, comment_id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(MemeDetail);

@@ -125,9 +125,10 @@ const MemeCards = ({
                         <span>{meme.downvotes} </span>
                       </Fragment>
                     )}
-                     <button className='btn btn-info' onClick={()=>{
+                     <button style={{padding:"6px"}} className='btn btn-info' onClick={()=>{
                        history.push(`memes/${meme._id}`)
                      }}>Info</button>
+                     {meme.author === username? <button style={{padding:"6px",marginLeft:"6px"}} className='btn btn-danger'>Delete</button>:null} 
                 </div>
               </div>
             </div>
