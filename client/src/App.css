@@ -2,6 +2,20 @@
   justify-content: center;
 }
 
+#user_buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+#user_buttons button {
+  margin: 3px 10px 3px 0
+}
+#user_buttons span {
+  align-self: center;
+  margin-right: 5px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
 .jumbotron p {
   font-size: 3rem;
   font-weight: 750;
@@ -12,6 +26,7 @@
   position: relative;
   display: flex;
   justify-content: center;
+  margin-bottom: 5px;
 }
 .jumbotron img {
   max-width: 100%;
@@ -21,7 +36,7 @@
 }
 
 #addButton {
-  margin: 0;
+  margin: 0 10px 0 0;
 }
 .card-body {
   padding: 0.8rem;
@@ -51,6 +66,17 @@ img .card-img-top {
 }
 .card-deck > div {
   padding-bottom: 1%;
+}
+
+/* NEW MEME FORM */
+#post_meme_form {
+  background-color: #e9ecef;
+  padding: 3%;
+  border-radius: 15px;
+}
+#post_meme_form h3 {
+  padding-bottom: 20px;
+
 }
 
 /* LOGIN FORM */

@@ -6,6 +6,7 @@ import { downvoteMeme } from "../actions/downvote";
 import { connect } from "react-redux";
 import { Cookies } from "react-cookie";
 import { checkAuth } from "../actions/auth";
+import {deleteMeme} from '../actions/deleteMeme'
 
 const MemeCards = ({
   dispatch,
@@ -16,6 +17,7 @@ const MemeCards = ({
   upvoteMeme,
   downvoteMeme,
   username,
+  deleteMeme
 }) => {
   //HERE!! MUst include memesData so that fetchMemes is called everytime DB updated!!
   useEffect(() => {
@@ -39,6 +41,12 @@ const MemeCards = ({
   const downvote = (e) => {
     downvoteMeme(e);
   };
+
+  //CLick to delete Meme
+  const clickToDeleteMeme = e => {
+    let meme_id = e.target.getAttribute('data-id')
+    deleteMeme(meme_id)
+  }
 
 
   return (
@@ -128,7 +136,7 @@ const MemeCards = ({
                      <button style={{padding:"6px"}} className='btn btn-info' onClick={()=>{
                        history.push(`memes/${meme._id}`)
                      }}>Info</button>
-                     {meme.author === username? <button style={{padding:"6px",marginLeft:"6px"}} className='btn btn-danger'>Delete</button>:null} 
+                     {meme.author === username? <button data-id={meme._id} onClick={clickToDeleteMeme} style={{padding:"6px",marginLeft:"6px"}} className='btn btn-danger'>Delete</button>:null} 
                 </div>
               </div>
             </div>
@@ -152,6 +160,7 @@ const mapDispatchToProps = (dispatch) => ({
   upvoteMeme: (e) => dispatch(upvoteMeme(e)),
   downvoteMeme: (e) => dispatch(downvoteMeme(e)),
   checkAuth: (e) => dispatch(checkAuth(e)),
+  deleteMeme: meme_id => dispatch(deleteMeme(meme_id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MemeCards);

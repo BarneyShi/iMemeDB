@@ -20,7 +20,7 @@ const PostMeme = ({ postMeme, isPosted, isLogged, username, checkAuth }) => {
   };
 
   return (
-    <div>
+    <div id='post_meme_form'>
       {!isLogged ? (
         <Fragment>
           <Redirect
@@ -32,7 +32,8 @@ const PostMeme = ({ postMeme, isPosted, isLogged, username, checkAuth }) => {
         </Fragment>
       ) : (
         <Fragment>
-          <form onSubmit={onSubmit}>
+      <h3>POST MEME</h3>
+          <form  onSubmit={onSubmit}>
             <input className="d-block" placeholder="Name" name="name" />
             <input className="d-block" placeholder="Meme URL" name="image" />
             <textarea
@@ -44,7 +45,6 @@ const PostMeme = ({ postMeme, isPosted, isLogged, username, checkAuth }) => {
           </form>
         </Fragment>
       )}
-      <h1>POST MEME</h1>
     </div>
   );
 };

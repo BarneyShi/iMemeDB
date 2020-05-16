@@ -18,9 +18,6 @@ const LoginForm = ({ dispatch, isLoggedin, user, attempt }) => {
       if (attempt) {
         history.push({
           pathname: "/login",
-          state: {
-            error_login: "Incorrect password/email",
-          },
         });
       }
     }
@@ -40,10 +37,10 @@ const LoginForm = ({ dispatch, isLoggedin, user, attempt }) => {
       ) : null}
 
       {/* Wrong credential */}
-      {attempt && history.location.state.error_login ? (
+      {attempt ? (
         <Fragment>
           <p style={{ color: "red", fontStyle: "italic" }}>
-            {history.location.state.error_login}
+          Incorrect password/email
           </p>{" "}
         </Fragment>
       ) : null}

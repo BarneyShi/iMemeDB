@@ -21,26 +21,27 @@ class App extends Component {
   render() {
     return (
       <div>
+         <Profile />
         <div className="jumbotron">
+
           <a href="/">
-            <img alt="LOGO" src='/logo.png' />
+            <img alt="LOGO" src="/logo.png" />
           </a>
-          <div style={{ position: "absolute", bottom: "1vh", right: "3vw" }}>
+        </div>
+        <div style={{ display:"flex", flexDirection:"row-reverse"}}>
             <Link to="/postmeme">
               <button className="btn btn-success" id="addButton">
-                Add meme
+                + Add meme
               </button>
             </Link>
-            <Profile />
           </div>
-        </div>
         <div className="container">
           <div className="row">
             <Switch>
               <Route path="/register" component={RegisterForm}></Route>
               <Route path="/login" component={LoginForm}></Route>
               <Route path="/postmeme" component={PostMeme}></Route>
-              <Route exact path='/memes/:id'component={MemeDetail}></Route>
+              <Route exact path="/memes/:id" component={MemeDetail}></Route>
             </Switch>
           </div>
           <div className="row" style={{ display: "inherit" }}>
@@ -51,17 +52,10 @@ class App extends Component {
             </div>
           </div>
         </div>
-        {/* Custome modal
-        <div id="contact-form" style={{ display: "none" }}>
-          <form id="form-body">
-            <h2>Contact Form</h2>
-            <div onClick={this.exitButton} id="exit-button">
-              &times;
-            </div>
-            <br />
-            <button className="btn btn-primary">Submit</button>
-          </form>
-        </div> */}
+
+        <div style={{borderTop:"1px solid #0000001a", textAlign:"center"}}>
+        &copy;	2020 Copyright - Barney Shi
+        </div>
       </div>
     );
   }

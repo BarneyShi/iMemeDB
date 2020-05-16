@@ -7,32 +7,32 @@ import { Cookies } from "react-cookie";
 
 const Profile = ({ dispatch, isLogged, username }) => {
   let cookie = new Cookies();
-  useEffect(() => dispatch(checkAuth(cookie.get("token"))),[dispatch,cookie]);
+  useEffect(() => dispatch(checkAuth(cookie.get("token"))), [dispatch, cookie]);
   //Click to sign out
   const onClick = () => {
-    cookie.remove("token", {path:'/'});
+    cookie.remove("token", { path: "/" });
     dispatch(notlogged);
     window.location.reload();
   };
-// 
+  //
   return (
-    <div>
+    <div id="user_buttons">
       {!isLogged ? (
         <Fragment>
-     
-          <Link to="/login">
-            <button className="btn btn-success">Login</button>
-          </Link>
           <Link to="/register">
             <button className="btn btn-danger">Register</button>
+          </Link>
+          <Link to="/login">
+            <button className="btn btn-success">Login</button>
           </Link>
         </Fragment>
       ) : (
         <Fragment>
-          <span>Hello, {username}</span>
-          <button className="btn btn-warning" onClick={onClick}>
+                    <button className="btn btn-warning" onClick={onClick}>
             Logout
           </button>
+          <span>Hello, {username}</span>
+
         </Fragment>
       )}
     </div>
