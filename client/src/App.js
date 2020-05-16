@@ -25,7 +25,7 @@ class App extends Component {
         <div className="jumbotron">
 
           <a href="/">
-            <img alt="LOGO" src="/logo.png" />
+            <img alt="LOGO" src="logo.png" />
           </a>
         </div>
         <div style={{ display:"flex", flexDirection:"row-reverse"}}>
