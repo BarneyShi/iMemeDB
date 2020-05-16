@@ -47,7 +47,7 @@ class App extends Component {
           <div className="row" style={{ display: "inherit" }}>
             <div className="card-deck">
               <Switch>
-                <Route exact path="/" component={MemeCards}></Route>
+                <Route exact path="https://barneyshi.github.io/iMemeDB/" component={MemeCards}></Route>
               </Switch>
             </div>
           </div>
