@@ -9,11 +9,12 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from './reducers'
 
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename='https://barneyshi.github.io/iMemeDB/'>
+    <BrowserRouter >
       <Provider store={store}>
         <App />
       </Provider>
