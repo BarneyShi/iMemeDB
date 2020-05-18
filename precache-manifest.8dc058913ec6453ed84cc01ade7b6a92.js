@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "619170d0a1e73806d658a35c831d5c73",
+    "revision": "0808bfcb940244c66f50d2f08b7a50a1",
     "url": "/iMemeDB/index.html"
   },
   {
-    "revision": "620adda2f26d1f2dbaf1",
+    "revision": "634e41efeb88316438a4",
     "url": "/iMemeDB/static/css/main.60c9c244.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/iMemeDB/static/js/2.77d49a17.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "620adda2f26d1f2dbaf1",
-    "url": "/iMemeDB/static/js/main.b7a94c7a.chunk.js"
+    "revision": "634e41efeb88316438a4",
+    "url": "/iMemeDB/static/js/main.cd8a29ab.chunk.js"
   },
   {
     "revision": "615d6d76e36c917e8207",

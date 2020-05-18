@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/iMemeDB/static/css/main.60c9c244.chunk.css",
-    "main.js": "/iMemeDB/static/js/main.b7a94c7a.chunk.js",
-    "main.js.map": "/iMemeDB/static/js/main.b7a94c7a.chunk.js.map",
+    "main.js": "/iMemeDB/static/js/main.cd8a29ab.chunk.js",
+    "main.js.map": "/iMemeDB/static/js/main.cd8a29ab.chunk.js.map",
     "runtime-main.js": "/iMemeDB/static/js/runtime-main.c0388097.js",
     "runtime-main.js.map": "/iMemeDB/static/js/runtime-main.c0388097.js.map",
     "static/js/2.77d49a17.chunk.js": "/iMemeDB/static/js/2.77d49a17.chunk.js",
     "static/js/2.77d49a17.chunk.js.map": "/iMemeDB/static/js/2.77d49a17.chunk.js.map",
     "index.html": "/iMemeDB/index.html",
-    "precache-manifest.a1e2c3db3d834c338dfcb2ca2756e749.js": "/iMemeDB/precache-manifest.a1e2c3db3d834c338dfcb2ca2756e749.js",
+    "precache-manifest.8dc058913ec6453ed84cc01ade7b6a92.js": "/iMemeDB/precache-manifest.8dc058913ec6453ed84cc01ade7b6a92.js",
     "service-worker.js": "/iMemeDB/service-worker.js",
     "static/css/main.60c9c244.chunk.css.map": "/iMemeDB/static/css/main.60c9c244.chunk.css.map",
     "static/js/2.77d49a17.chunk.js.LICENSE.txt": "/iMemeDB/static/js/2.77d49a17.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c0388097.js",
     "static/js/2.77d49a17.chunk.js",
     "static/css/main.60c9c244.chunk.css",
-    "static/js/main.b7a94c7a.chunk.js"
+    "static/js/main.cd8a29ab.chunk.js"
   ]
 }
