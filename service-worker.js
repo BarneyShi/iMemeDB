@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/iMemeDB/precache-manifest.2dae95f041ce6794b1eaf1110fed2fb0.js"
+  "/iMemeDB/precache-manifest.8dc058913ec6453ed84cc01ade7b6a92.js"
 );
 
 self.addEventListener('message', (event) => {
