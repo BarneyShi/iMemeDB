@@ -13,7 +13,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='https://barneyshi.github.io/iMemeDB/'>
       <Provider store={store}>
         <App />
       </Provider>
