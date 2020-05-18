@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/iMemeDB/static/css/main.60c9c244.chunk.css",
-    "main.js": "/iMemeDB/static/js/main.fc06827a.chunk.js",
-    "main.js.map": "/iMemeDB/static/js/main.fc06827a.chunk.js.map",
+    "main.js": "/iMemeDB/static/js/main.2cc53e89.chunk.js",
+    "main.js.map": "/iMemeDB/static/js/main.2cc53e89.chunk.js.map",
     "runtime-main.js": "/iMemeDB/static/js/runtime-main.c0388097.js",
     "runtime-main.js.map": "/iMemeDB/static/js/runtime-main.c0388097.js.map",
-    "static/js/2.63033d47.chunk.js": "/iMemeDB/static/js/2.63033d47.chunk.js",
-    "static/js/2.63033d47.chunk.js.map": "/iMemeDB/static/js/2.63033d47.chunk.js.map",
+    "static/js/2.77d49a17.chunk.js": "/iMemeDB/static/js/2.77d49a17.chunk.js",
+    "static/js/2.77d49a17.chunk.js.map": "/iMemeDB/static/js/2.77d49a17.chunk.js.map",
     "index.html": "/iMemeDB/index.html",
-    "precache-manifest.2e087e7367acc6d54e9af0a90bf5e923.js": "/iMemeDB/precache-manifest.2e087e7367acc6d54e9af0a90bf5e923.js",
+    "precache-manifest.2dae95f041ce6794b1eaf1110fed2fb0.js": "/iMemeDB/precache-manifest.2dae95f041ce6794b1eaf1110fed2fb0.js",
     "service-worker.js": "/iMemeDB/service-worker.js",
     "static/css/main.60c9c244.chunk.css.map": "/iMemeDB/static/css/main.60c9c244.chunk.css.map",
-    "static/js/2.63033d47.chunk.js.LICENSE.txt": "/iMemeDB/static/js/2.63033d47.chunk.js.LICENSE.txt"
+    "static/js/2.77d49a17.chunk.js.LICENSE.txt": "/iMemeDB/static/js/2.77d49a17.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c0388097.js",
-    "static/js/2.63033d47.chunk.js",
+    "static/js/2.77d49a17.chunk.js",
     "static/css/main.60c9c244.chunk.css",
-    "static/js/main.fc06827a.chunk.js"
+    "static/js/main.2cc53e89.chunk.js"
   ]
 }
