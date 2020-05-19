@@ -10,17 +10,17 @@ Memes are things that can cheer me up and make my days. I always want to do a pr
 
 **Features**:
 **Functions**:
-1. Upvote/downvote memes only for registered & logined users
+1. Upvote/downvote memes only for registered & logged in users
 2. Every user can only upvote/downvote per meme once.
-3. Only registered & logined users can comment.
+3. Only registered & logged in users can comment.
 4. Users can only delete own memes/comments
 
 
 **Tech**:
 1. JWT Authorization.
 2. Redux state management.
-3. useEffect/useHistroy Hooks
-4. MongoDB Atalas as database.
+3. useEffect/useHistory Hooks
+4. MongoDB Atlas as database.
 5. Bootstrap frontend responsive design
 
 **Homepage**:
