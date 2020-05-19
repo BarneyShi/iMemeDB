@@ -15,7 +15,7 @@ export const delete_comment = (meme_id,comment_id) => dispacth => {
   const cookie = new Cookies();
   const token = cookie.get("token");
 
-    axios.delete(`http://localhost:3000/memes/${meme_id}/comments/${comment_id}`, {
+    axios.delete(`/memes/${meme_id}/comments/${comment_id}`, {
         headers: {
             Authorization: "Bearer " + token,
         }

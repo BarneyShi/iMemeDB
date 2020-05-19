@@ -13,7 +13,7 @@ export const downvoteMeme = e => dispatch => {
     const id = e.target.getAttribute('data-id');
     const cookie = new Cookies();
     const token = cookie.get("token");
-    axios.post(`http://localhost:3000/memes/${id}/downvote`,null,{
+    axios.post(`/memes/${id}/downvote`,null,{
         headers: {
             Authorization: "Bearer " + token,
           },

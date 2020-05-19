@@ -12,7 +12,7 @@ export const notlogged = () => ({
 
 export const checkAuth = (token) => (dispatch) => {
   axios
-    .get("http://localhost:3000/user/checkauth", {
+    .get("/user/checkauth", {
       headers: {
         Authorization: "Bearer " + token,
       },

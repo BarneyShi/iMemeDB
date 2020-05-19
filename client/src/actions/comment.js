@@ -17,7 +17,7 @@ export const post_comment = (comment, id) => (dispatch) => {
   const token = cookie.get("token");
   axios
     .post(
-      `http://localhost:3000/memes/${id}/comments`,
+      `/memes/${id}/comments`,
       { comment: comment },
       {
         headers: {

@@ -12,7 +12,7 @@ export const not_register_type = () =>({
 })
 
 export const register = () => dispatch => {
-    axios.post('http://localhost:3000/user/register', {
+    axios.post('/user/register', {
         username: document.getElementById('username').value,
         email: document.getElementById('email').value,
         password: document.getElementById('password').value

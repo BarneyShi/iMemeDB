@@ -10,7 +10,7 @@ export const postMeme = (e) => (dispatch) => {
   const cookie = new Cookies();
   const token = cookie.get("token");
   axios
-    .post("http://localhost:3000/memes", form_data, {
+    .post("/memes", form_data, {
       headers: {
         Authorization: "Bearer " + token,
       },

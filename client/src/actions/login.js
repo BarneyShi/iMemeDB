@@ -14,7 +14,7 @@ const not_logged = (arg) => ({
 
 export const log_in = () => (dispatch) => {
   axios
-    .post("http://localhost:3000/user/login", {
+    .post("/user/login", {
       email: document.getElementById("email").value,
       password: document.getElementById("password").value,
     })

@@ -9,5 +9,5 @@ export const getMemes = memes => ({
 
 
 export const fetchMemes = () => dispatch => {
-    axios.get('http://localhost:3000/memes').then(response => dispatch(getMemes(response.data)))
+    axios.get('/memes').then(response => dispatch(getMemes(response.data)))
 }

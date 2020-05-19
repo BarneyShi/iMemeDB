@@ -13,7 +13,7 @@ export const upvoteMeme = (e) => (dispatch) => {
   const token = cookie.get("token");
   //BUG FIXED: Must specify NULL for post data
   axios
-    .post(`http://localhost:3000/memes/${id}/upvote`,null, {
+    .post(`/memes/${id}/upvote`,null, {
       headers: {
         Authorization: "Bearer " + token,
       },
