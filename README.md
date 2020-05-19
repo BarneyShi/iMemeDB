@@ -2,6 +2,7 @@
 Project for killing time in quarantine 
 
 Frontend: React.js, Redux, React Hooks
+
 Backend: Node.js, Express.js, JWT Auth, MongoDB Atlas.
 
 Introduction: 
