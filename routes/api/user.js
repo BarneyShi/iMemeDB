@@ -74,7 +74,7 @@ router.post("/login", (req, res) => {
 //@ Private
 router.get(
   "/checkauth",
-  auth({ secret: process.env.ACCESS_TOKEN }),
+  auth({ secret: process.env.ACCESS_TOKEN, algorithms: ['HS256'] }),
   (req, res) => {
     //USe req.user to DECODE TOKEN
     res.status(200).send({ Message: "Logged In", Data: req.user });

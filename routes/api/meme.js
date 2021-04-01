@@ -23,7 +23,7 @@ router.use(
 
 router.post(
   "/",
-  auth({ secret: process.env.ACCESS_TOKEN }),
+  auth({ secret: process.env.ACCESS_TOKEN, algorithms: ["HS256"] }),
   formDataHandler.none(),
   (req, res) => {
     const newmeme = new NewMeme({
@@ -54,7 +54,7 @@ router.get("/", (req, res) => {
 //@access public
 router.post(
   "/:id/upvote",
-  auth({ secret: process.env.ACCESS_TOKEN }),
+  auth({ secret: process.env.ACCESS_TOKEN, algorithms: ['HS256'] }),
   (req, res) => {
     NewUser.findOne({ username: req.user.username }, (err, result) => {
       if (err) throw err;
@@ -94,7 +94,7 @@ router.post(
 //@access public
 router.post(
   "/:id/downvote",
-  auth({ secret: process.env.ACCESS_TOKEN }),
+  auth({ secret: process.env.ACCESS_TOKEN, algorithms: ['HS256'] }),
   (req, res) => {
     NewUser.findOne({ username: req.user.username }, (err, result) => {
       if (err) throw err;
@@ -136,7 +136,7 @@ router.post(
 //access Private
 router.post(
   "/:id/comments",
-  auth({ secret: process.env.ACCESS_TOKEN }),
+  auth({ secret: process.env.ACCESS_TOKEN, algorithms: ['HS256'] }),
   (req, res) => {
     NewMeme.findByIdAndUpdate(
       { _id: mongoose.Types.ObjectId(req.params.id) },
@@ -164,13 +164,13 @@ router.post(
 //access Private
 router.delete(
   "/:id",
-  auth({ secret: process.env.ACCESS_TOKEN }),
+  auth({ secret: process.env.ACCESS_TOKEN, algorithms: ['HS256'] }),
   (req, res) => {
     NewMeme.findByIdAndDelete(
-      {_id: mongoose.Types.ObjectId(req.params.id) },
+      { _id: mongoose.Types.ObjectId(req.params.id) },
       (err, result) => {
-        if(err) throw err;
-        res.send('MEME DELETED')
+        if (err) throw err;
+        res.send("MEME DELETED");
       }
     );
   }
@@ -180,7 +180,7 @@ router.delete(
 //access Private
 router.delete(
   "/:id/comments/:comment_id",
-  auth({ secret: process.env.ACCESS_TOKEN }),
+  auth({ secret: process.env.ACCESS_TOKEN, algorithms: ['HS256'] }),
   (req, res) => {
     NewMeme.findByIdAndUpdate(
       { _id: mongoose.Types.ObjectId(req.params.id) },
