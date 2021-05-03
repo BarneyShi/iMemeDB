@@ -1,5 +1,13 @@
+h5 {
+  font-family: Proxima Nova Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 1.15rem;
+}
 .row {
   justify-content: center;
+}
+
+.btn {
+  box-shadow: 0 8px 8px 0 rgb(0 0 0 / 16%);
 }
 
 #user_buttons {
@@ -27,6 +35,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 5px;
+  box-shadow: 0 8px 8px #80808038;
 }
 .jumbotron img {
   max-width: 100%;
@@ -36,8 +45,18 @@
 }
 
 #addButton {
-  margin: 0 10px 0 0;
+  margin: 0 10px 5px 0;
 }
+
+.card {
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 16%);
+}
+.card:hover {
+  transform: translateY(-8px);
+  cursor: pointer;
+  filter: opacity(0.8);
+}
+
 .card-body {
   padding: 0.8rem;
   border-top: 0.5px solid #808080e0;
@@ -65,7 +84,7 @@ img .card-img-top {
   background-color: #f8f9fa;
 }
 .card-deck > div {
-  padding-bottom: 1%;
+  padding-bottom: 2%;
 }
 
 /* NEW MEME FORM */
