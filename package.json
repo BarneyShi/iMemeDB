@@ -26,7 +26,7 @@
     "nodemon": "^2.0.7"
   },
   "devDependencies": {
-    "node-forge": "^0.10.0",
+    "node-forge": "^1.0.0",
     "urijs": "^1.19.6"
   }
 }
